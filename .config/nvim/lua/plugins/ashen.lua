@@ -6,15 +6,9 @@ return {
     opts = {
       colors = {
         red_ember = "#933737",
-        background = "#2b2b2b",
+        background = "#525252",
       },
       -- transparent = true,
-    },
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "ashen",
     },
   },
 }

@@ -1,13 +1,13 @@
 return {
   { "craftzdog/solarized-osaka.nvim" },
   { "thesimonho/kanagawa-paper.nvim" },
-  { "ficcdaf/ashen.nvim" },
-  { "sainnhe/gruvbox-material" },
+  { "sainnhe/gruvbox-material", lazy = false, priority = 1000, gruvbox_material_background = "soft" },
+  { "rose-pine/neovim" },
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox-material",
+      colorscheme = "rose-pine",
     },
   },
 }
