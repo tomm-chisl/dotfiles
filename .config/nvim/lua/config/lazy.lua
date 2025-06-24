@@ -20,6 +20,16 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins" },
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        setup = {
+          rust_analyzer = function()
+            return true
+          end,
+        },
+      },
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -48,16 +58,6 @@ require("lazy").setup({
         "tutor",
         "zipPlugin",
       },
-    },
-  },
-})(
-{
-  "neovim/nvim-lspconfig",
-  opts = {
-    setup = {
-      rust_analyzer = function()
-        return true
-      end,
     },
   },
 })
