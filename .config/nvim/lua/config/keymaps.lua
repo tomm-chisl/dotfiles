@@ -27,3 +27,11 @@ end, { desc = "Harpoon jump to file 3" })
 vim.keymap.set("n", "<C-l>", function()
   harpoon_ui.nav_file(4)
 end, { desc = "Harpoon jump to file 4" })
+
+-- See diagnostic of issue from lsp
+vim.keymap.set(
+  "n",
+  "<leader>dd",
+  vim.diagnostic.open_float,
+  { desc = "[d]isplay [d]iagnostic", noremap = true, silent = true }
+)

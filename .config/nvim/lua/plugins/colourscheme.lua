@@ -4,11 +4,13 @@ return {
   { "sainnhe/gruvbox-material", lazy = false, priority = 1000, gruvbox_material_background = "soft" },
   { "rose-pine/neovim" },
   { "cryptomilk/nightcity.nvim" },
+  { "danilo-augusto/vim-afterglow" },
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nightcity",
+      colorscheme = "afterglow",
+      transparent = true,
     },
   },
 }
