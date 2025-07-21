@@ -70,9 +70,46 @@ local capabilities = {
 
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
+vim.lsp.inlay_hint.enable(false)
 vim.lsp.config("*", {
   capabilities = capabilities,
+  opts = {
+    inlay_hints = { enabled = false },
+  },
   root_markers = { ".git" },
 })
 
+local function on_attach(client, buffer)
+  if client.supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+  end
+end
+
+vim.lsp.config.rust_analyzer = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  opts = {
+    inlay_hints = { enabled = false },
+  },
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
+  root_markers = { "Cargo.toml", ".git" },
+  single_file_support = true,
+  settings = {
+    ["rust-analyzer"] = {
+      diagnostics = {
+        enable = false,
+      },
+      inlayHints = {
+        maxLength = 0,
+      },
+    },
+  },
+  before_init = function(init_params, config)
+    -- See https://github.com/rust-lang/rust-analyzer/blob/eb5da56d839ae0a9e9f50774fa3eb78eb0964550/docs/dev/lsp-extensions.md?plain=1#L26
+    if config.settings and config.settings["rust-analyzer"] then
+      init_params.initializationOptions = config.settings["rust-analyzer"]
+    end
+  end,
+}
 vim.lsp.enable({ "ruff", "rust_analyzer", "ty" })

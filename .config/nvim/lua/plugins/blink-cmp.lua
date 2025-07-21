@@ -34,6 +34,10 @@ return {
         nerd_font_variant = "mono",
       },
 
+      enabled = function()
+        return not vim.tbl_contains({ "typr" }, vim.bo.filetype)
+      end,
+
       -- (Default) Only show the documentation popup when manually triggered
       completion = { documentation = { auto_show = false } },
 
