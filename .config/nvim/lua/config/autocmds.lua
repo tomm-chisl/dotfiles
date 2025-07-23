@@ -15,4 +15,10 @@ return {
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end,
   }),
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "typr",
+    callback = function()
+      vim.b.autopairs_disable = true
+    end,
+  }),
 }
