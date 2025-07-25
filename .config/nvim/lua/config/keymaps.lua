@@ -16,22 +16,26 @@ local harpoon_ui = require("harpoon.ui")
 vim.keymap.set("n", "<leader>a", harpoon_mark.add_file, { desc = "Harpoon add file" })
 vim.keymap.set("n", "<C-e>", harpoon_ui.toggle_quick_menu, { desc = "Harpoon toggle quick menu" })
 vim.keymap.set("n", "<C-h>", function()
-  harpoon_ui.nav_file(1)
+    harpoon_ui.nav_file(1)
 end, { desc = "Harpoon jump to file 1" })
 vim.keymap.set("n", "<C-j>", function()
-  harpoon_ui.nav_file(2)
+    harpoon_ui.nav_file(2)
 end, { desc = "Harpoon jump to file 2" })
 vim.keymap.set("n", "<C-k>", function()
-  harpoon_ui.nav_file(3)
+    harpoon_ui.nav_file(3)
 end, { desc = "Harpoon jump to file 3" })
 vim.keymap.set("n", "<C-l>", function()
-  harpoon_ui.nav_file(4)
+    harpoon_ui.nav_file(4)
 end, { desc = "Harpoon jump to file 4" })
 
 -- See diagnostic of issue from lsp
 vim.keymap.set(
-  "n",
-  "<leader>dd",
-  vim.diagnostic.open_float,
-  { desc = "[d]isplay [d]iagnostic", noremap = true, silent = true }
+    "n",
+    "<leader>dd",
+    vim.diagnostic.open_float,
+    { desc = "[d]isplay [d]iagnostic", noremap = true, silent = true }
 )
+
+-- Leader y to copy to system clipboard
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
