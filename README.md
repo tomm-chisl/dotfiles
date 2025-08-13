@@ -1,4 +1,4 @@
-My config file for WSL using Wezterm and Neovim.
+My config file for WSL using Wezterm and Neovim. Unless otherwise stated, the files/folders in this repo should live in the home folder of WSL.
 
 # Setup
 Below is a non-exhaustive (I will add to this list as I remember) list of tools that need to be installed in addition to the config files:
