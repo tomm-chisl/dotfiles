@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             mode = mode or "n"
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
-        map("gr", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+        map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
         map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
@@ -105,4 +105,35 @@ vim.lsp.config.rust_analyzer = {
         end
     end,
 }
-vim.lsp.enable({ "ruff", "ruff-lsp", "rust_analyzer", "ty" })
+
+-- Golang
+vim.lsp.config.gopls = {
+    -- Command and arguments to start the server.
+    cmd = { "gopls" },
+    -- Filetypes to automatically attach to.
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    -- Sets the "workspace" to the directory where any of these files is found.
+    -- Files that share a root directory will reuse the LSP server connection.
+    -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+    root_markers = { "go.mod", "go.work", ".git", ".gitignore" },
+    -- Specific settings to send to the server. The schema is server-defined.
+    -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+        },
+    },
+}
+
+vim.lsp.config.ty = {
+    cmd = { "ty", "server" },
+    filetypes = { "python" },
+    root_dir = vim.fs.root(0, { ".git/", "pyproject.toml" }),
+    settings = {},
+}
+
+vim.lsp.enable({ "gopls", "ruff", "ruff-lsp", "rust_analyzer", "ty" })
